@@ -154,48 +154,83 @@ function onResults(results) {
         }
       }
     }
-    // --- LOGIKA PUSH & SQUAT ---
+    // --- LOGIKA PUSH & SQUAT (VERSI ANTI-GHOST REPS) ---
     else {
       let targetAngle = 90;
       if (exId === "knee_pushup") targetAngle = 100;
       else if (activeWorkout.type === "squat") targetAngle = 90;
 
-      const isHorizontal = Math.abs(side.s.y - side.h.y) < 0.2;
-
+      // 1. Logika Push Up
       if (activeWorkout.type === "push") {
-        if (currentAngle < targetAngle) {
-          if (isHorizontal && isBackStraight) {
-            stage = "down";
-            feedback.innerText = "BAGUS! SEKARANG DORONG KE ATAS ↑";
-            feedback.style.color = "var(--neon-blue)";
-            feedback.style.borderColor = "var(--neon-blue)";
+        // Syarat mutlak: Badan harus horizontal (bahu & pinggul sejajar)
+        const isHorizontal = Math.abs(side.s.y - side.h.y) < 0.2;
+
+        if (isHorizontal && isBackStraight) {
+          // Hanya izinkan masuk ke stage 'down' jika badan benar-benar di bawah
+          if (currentAngle < targetAngle) {
+            if (stage !== "down") {
+              stage = "down";
+              feedback.innerText = "BAGUS! SEKARANG DORONG KE ATAS ↑";
+              feedback.style.color = "var(--neon-blue)";
+              feedback.style.borderColor = "var(--neon-blue)";
+            }
+          }
+
+          // Hitung repetisi HANYA jika sudah dari 'down' dan sekarang tangan lurus
+          if (currentAngle > 150 && stage === "down") {
+            reps++;
+            stage = "up"; // Reset stage ke atas
+            updateUI(repDisplay, feedback, reps, "PUSH SUCCESS! 🔥");
+            feedback.style.borderColor = "rgba(255, 255, 255, 0.15)";
+            feedback.style.color = "white";
+            playSound("rep");
+            speak(reps.toString());
+          }
+        } else {
+          // KUNCI: Jika berdiri/jalan, paksa stage kembali ke awal
+          // Ini mencegah siku berputar saat berdiri terhitung sebagai repetisi
+          if (stage !== "start") {
+            stage = "start";
+            feedback.innerText = "POSISIKAN BADAN MENDATAR";
+            feedback.style.color = "var(--neon-red)";
+            feedback.style.borderColor = "var(--neon-red)";
           }
         }
+      }
 
-        if (currentAngle > 150 && stage === "down") {
-          reps++;
-          stage = "up";
-          updateUI(repDisplay, feedback, reps, "PUSH SUCCESS! 🔥");
-          feedback.style.borderColor = "rgba(255, 255, 255, 0.15)";
-          feedback.style.color = "white";
-          playSound("rep");
-          speak(reps.toString());
-        }
-      } else if (activeWorkout.type === "squat") {
-        if (currentAngle < targetAngle) stage = "down";
-        if (currentAngle > 160 && stage === "down") {
-          reps++;
-          stage = "up";
-          updateUI(repDisplay, feedback, reps, "SQUAT SUCCESS! 🍑");
-          feedback.style.borderColor = "rgba(255, 255, 255, 0.15)";
-          feedback.style.color = "white";
-          playSound("rep");
-          speak(reps.toString());
+      // 2. Logika Squat
+      else if (activeWorkout.type === "squat") {
+        // Syarat mutlak: Pinggul harus turun (Y pinggul harus lebih besar dari ambang tertentu)
+        // side.h.y > 0.45 memastikan Anda tidak sedang berdiri tegak
+        const isHipDropped = side.h.y > 0.45;
+
+        if (isHipDropped) {
+          if (currentAngle < targetAngle) {
+            if (stage !== "down") {
+              stage = "down";
+              feedback.innerText = "MANTAP! SEKARANG BERDIRI TEGAK ↑";
+            }
+          }
+
+          if (currentAngle > 160 && stage === "down") {
+            reps++;
+            stage = "up";
+            updateUI(repDisplay, feedback, reps, "SQUAT SUCCESS! 🍑");
+            feedback.style.borderColor = "rgba(255, 255, 255, 0.15)";
+            feedback.style.color = "white";
+            playSound("rep");
+            speak(reps.toString());
+          }
+        } else {
+          // KUNCI: Jika hanya menendang sambil berdiri, reset stage ke awal
+          if (stage !== "up" && stage !== "start") {
+            stage = "start";
+            feedback.innerText = "AYO JONGKOK LEBIH RENDAH";
+          }
         }
       }
     }
   }
-
   // --- LOGIKA HOLD ---
   else if (activeWorkout.type === "hold") {
     let isPoseCorrect = false;
