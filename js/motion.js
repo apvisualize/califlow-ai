@@ -379,8 +379,8 @@ function initApp() {
       onFrame: async () => {
         await pose.send({ image: videoElement });
       },
-      width: 640,
-      height: 480,
+      width: isMobile ? 320 : 640,
+      height: isMobile ? 240 : 480,
     });
     camera.start();
     speak("System Online.");
