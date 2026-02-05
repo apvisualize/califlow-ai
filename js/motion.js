@@ -379,8 +379,8 @@ function initApp() {
       onFrame: async () => {
         await pose.send({ image: videoElement });
       },
-      width: isMobile ? 720 : 1920, // Tingkatkan ke HD/Full HD
-      height: isMobile ? 1280 : 1080,
+      width: 640,
+      height: 480,
     });
     camera.start();
     speak("System Online.");
