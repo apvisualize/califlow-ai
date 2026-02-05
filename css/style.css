@@ -2,14 +2,14 @@
    1. CORE VARIABLES & BASE SYSTEM
    ========================================= */
 :root {
-  --bg-dark: #0f1014;         /* Charcoal Black */
-  --card-bg: #1a1c23;         /* Elevated surface color */
-  --neon-blue: #00f3ff;       /* Primary Cyan */
+  --bg-dark: #0f1014; /* Charcoal Black */
+  --card-bg: #1a1c23; /* Elevated surface color */
+  --neon-blue: #00f3ff; /* Primary Cyan */
   --neon-blue-glow: rgba(0, 243, 255, 0.3);
-  --neon-red: #ff0055;        /* Danger/Error color */
-  --neon-green: #00ff88;      /* Success color */
+  --neon-red: #ff0055; /* Danger/Error color */
+  --neon-green: #00ff88; /* Success color */
   --text-main: #ffffff;
-  --text-muted: #94a3b8;      /* Soft grey for descriptions */
+  --text-muted: #94a3b8; /* Soft grey for descriptions */
   --glass-bg: rgba(15, 16, 20, 0.7);
   --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
@@ -18,7 +18,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Inter', -apple-system, sans-serif;
+  font-family:
+    "Inter",
+    -apple-system,
+    sans-serif;
 }
 
 body {
@@ -182,7 +185,7 @@ main {
   /* Menambah ketajaman visual */
   image-rendering: -webkit-optimize-contrast;
   image-rendering: crisp-edges;
-  filter: brightness(1.1) contrast(1.15) saturate(1.1);; /* Sedikit meningkatkan kecerahan & kontras */
+  filter: brightness(1.1) contrast(1.15) saturate(1.1); /* Sedikit meningkatkan kecerahan & kontras */
 }
 
 .hud-top {
@@ -202,7 +205,7 @@ main {
   justify-content: space-between;
   align-items: center;
   z-index: 10;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 #exercise-name {
@@ -241,7 +244,7 @@ main {
   display: inline-block;
   border: 2px solid rgba(255, 255, 255, 0.1);
   color: #fff;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   transition: all 0.3s ease;
 }
 
@@ -296,7 +299,7 @@ main {
   max-width: 550px;
   width: 100%;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
   position: relative;
 }
 
@@ -323,56 +326,75 @@ main {
 
 /* Elemen Pendukung script.js */
 .roadmap-header-container {
-    grid-column: 1 / -1;
-    margin-bottom: 30px;
+  grid-column: 1 / -1;
+  margin-bottom: 30px;
 }
 
 .btn-back-main {
-    padding: 12px 25px;
-    background: rgba(255,255,255,0.05);
-    color: var(--neon-blue);
-    border: 1px solid rgba(0, 243, 255, 0.3);
-    border-radius: 12px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: var(--transition);
+  padding: 12px 25px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--neon-blue);
+  border: 1px solid rgba(0, 243, 255, 0.3);
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
 }
 
 .btn-back-main:hover {
-    background: var(--neon-blue);
-    color: black;
+  background: var(--neon-blue);
+  color: black;
 }
 
 .roadmap-info-flex {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-top: 25px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 25px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.modal-title { color: var(--neon-blue); margin-bottom: 20px; font-weight: 800; }
-.modal-body-content { text-align: left; margin: 25px 0; color: var(--text-muted); }
-.instruction-list { padding-left: 20px; }
-.instruction-list li { margin-bottom: 8px; }
+.modal-title {
+  color: var(--neon-blue);
+  margin-bottom: 20px;
+  font-weight: 800;
+}
+.modal-body-content {
+  text-align: left;
+  margin: 25px 0;
+  color: var(--text-muted);
+}
+.instruction-list {
+  padding-left: 20px;
+}
+.instruction-list li {
+  margin-bottom: 8px;
+}
 
 .close-btn {
-    position: absolute;
-    top: 20px;
-    right: 25px;
-    font-size: 2rem;
-    color: var(--text-muted);
-    cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-size: 2rem;
+  color: var(--text-muted);
+  cursor: pointer;
 }
 
 /* =========================================
    6. RESPONSIVE DESIGN (MOBILE OPTIMIZED)
    ========================================= */
 @media (max-width: 768px) {
-  header { padding: 15px 20px; flex-direction: column; gap: 15px; }
-  .grid-container { grid-template-columns: 1fr; padding: 10px; }
-  
+  header {
+    padding: 15px 20px;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .grid-container {
+    grid-template-columns: 1fr;
+    padding: 10px;
+  }
+
   /* Perbaikan Posisi agar tidak tabrakan di Mobile */
   .btn-cancel-cam {
     top: 15px;
@@ -391,135 +413,170 @@ main {
     border-radius: 50px 100px 100px 50px;
     height: auto;
   }
-  
-  #exercise-name { font-size: 0.65rem; letter-spacing: 1px; }
-  #rep-display { font-size: 1.6rem; }
 
-  .hud-bottom { bottom: 30px; }
-  #feedback { 
-    font-size: 0.9rem; 
-    padding: 12px 20px; 
-    width: 95%; 
+  #exercise-name {
+    font-size: 0.65rem;
+    letter-spacing: 1px;
+  }
+  #rep-display {
+    font-size: 1.6rem;
+  }
+
+  .hud-bottom {
+    bottom: 30px;
+  }
+  #feedback {
+    font-size: 0.9rem;
+    padding: 12px 20px;
+    width: 95%;
     border-width: 1.5px;
   }
 }
 
-.hidden { display: none !important; }
+.hidden {
+  display: none !important;
+}
 
 .spinner {
   width: 60px;
   height: 60px;
-  border: 4px solid rgba(255,255,255,0.05);
+  border: 4px solid rgba(255, 255, 255, 0.05);
   border-top: 4px solid var(--neon-blue);
   border-radius: 50%;
   animation: spin 1s cubic-bezier(0.5, 0.1, 0.5, 0.9) infinite;
 }
 
-@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
 /* =========================================
    7. START OVERLAY & NEON BUTTON STYLING
    ========================================= */
 /* Container latar belakang saat sistem siap */
 div[style*="z-index: 10000"] {
-    background: radial-gradient(circle at center, #1a1c23 0%, #050505 100%) !important;
+  background: radial-gradient(
+    circle at center,
+    #1a1c23 0%,
+    #050505 100%
+  ) !important;
 }
 
 /* Judul SYSTEM READY */
 div[style*="z-index: 10000"] h1 {
-    font-family: 'Inter', sans-serif !important;
-    font-weight: 900 !important;
-    letter-spacing: 5px !important;
-    text-transform: uppercase !important;
-    background: linear-gradient(to bottom, #ffffff, var(--text-muted)) !important;
-    -webkit-background-clip: text !important;
-    background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
-    margin-bottom: 30px !important;
-    text-shadow: 0 10px 20px rgba(0,0,0,0.5) !important;
+  font-family: "Inter", sans-serif !important;
+  font-weight: 900 !important;
+  letter-spacing: 5px !important;
+  text-transform: uppercase !important;
+  background: linear-gradient(to bottom, #ffffff, var(--text-muted)) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  margin-bottom: 30px !important;
+  text-shadow: 0 10px 20px rgba(0, 0, 0, 0.5) !important;
 }
 
 /* Styling Tombol TAP TO START */
 #start-btn {
-    padding: 20px 60px !important;
-    font-family: 'Inter', sans-serif !important;
-    font-size: 1.2rem !important;
-    font-weight: 800 !important;
-    text-transform: uppercase !important;
-    letter-spacing: 3px !important;
-    color: #000 !important;
-    background: var(--neon-blue) !important;
-    border: none !important;
-    border-radius: 50px !important;
-    cursor: pointer !important;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-    box-shadow: 0 0 20px var(--neon-blue-glow), 
-                0 0 40px rgba(0, 243, 255, 0.1) !important;
+  padding: 20px 60px !important;
+  font-family: "Inter", sans-serif !important;
+  font-size: 1.2rem !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 3px !important;
+  color: #000 !important;
+  background: var(--neon-blue) !important;
+  border: none !important;
+  border-radius: 50px !important;
+  cursor: pointer !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  box-shadow:
+    0 0 20px var(--neon-blue-glow),
+    0 0 40px rgba(0, 243, 255, 0.1) !important;
 }
 
 /* Efek saat tombol di-hover (disentuh kursor) */
 #start-btn:hover {
-    transform: scale(1.05) !important;
-    box-shadow: 0 0 35px var(--neon-blue), 
-                0 0 60px rgba(0, 243, 255, 0.2) !important;
-    letter-spacing: 5px !important;
+  transform: scale(1.05) !important;
+  box-shadow:
+    0 0 35px var(--neon-blue),
+    0 0 60px rgba(0, 243, 255, 0.2) !important;
+  letter-spacing: 5px !important;
 }
 
 /* Efek saat tombol diklik */
 #start-btn:active {
-    transform: scale(0.95) !important;
+  transform: scale(0.95) !important;
 }
 
 /* Penyesuaian untuk layar HP */
 @media (max-width: 768px) {
-    /* Mengecilkan ukuran teks judul di HP */
-    div[style*="z-index: 10000"] h1 {
-        font-size: 1.8rem !important;
-        letter-spacing: 3px !important;
-        margin-bottom: 20px !important;
-    }
+  /* Mengecilkan ukuran teks judul di HP */
+  div[style*="z-index: 10000"] h1 {
+    font-size: 1.8rem !important;
+    letter-spacing: 3px !important;
+    margin-bottom: 20px !important;
+  }
 
-    /* Menyesuaikan ukuran tombol agar tidak memenuhi layar HP */
-    #start-btn {
-        padding: 15px 40px !important;
-        font-size: 1rem !important;
-        letter-spacing: 2px !important;
-        width: 80% !important; /* Tombol melebar proporsional */
-        max-width: 280px !important;
-    }
+  /* Menyesuaikan ukuran tombol agar tidak memenuhi layar HP */
+  #start-btn {
+    padding: 15px 40px !important;
+    font-size: 1rem !important;
+    letter-spacing: 2px !important;
+    width: 80% !important; /* Tombol melebar proporsional */
+    max-width: 280px !important;
+  }
 }
 
 /* =========================================
    8. ENHANCED LOADING SCREEN (TEMPEL DI SINI)
    ========================================= */
 #loading-screen {
-    background: radial-gradient(circle at center, #1a1c23 0%, #050505 100%) !important;
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-    z-index: 10001; /* Memastikan di atas segalanya */
+  background: radial-gradient(
+    circle at center,
+    #1a1c23 0%,
+    #050505 100%
+  ) !important;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  z-index: 10001; /* Memastikan di atas segalanya */
 }
 
 .spinner {
-    width: 70px !important;
-    height: 70px !important;
-    border: 5px solid rgba(0, 243, 255, 0.1) !important;
-    border-top: 5px solid var(--neon-blue) !important;
-    box-shadow: 0 0 20px var(--neon-blue-glow), inset 0 0 10px var(--neon-blue-glow) !important;
+  width: 70px !important;
+  height: 70px !important;
+  border: 5px solid rgba(0, 243, 255, 0.1) !important;
+  border-top: 5px solid var(--neon-blue) !important;
+  box-shadow:
+    0 0 20px var(--neon-blue-glow),
+    inset 0 0 10px var(--neon-blue-glow) !important;
 }
 
 #loading-screen p {
-    font-family: 'Inter', sans-serif !important;
-    font-weight: 800 !important;
-    letter-spacing: 4px !important;
-    text-transform: uppercase !important;
-    color: var(--text-main) !important;
-    animation: pulseText 1.5s ease-in-out infinite !important;
+  font-family: "Inter", sans-serif !important;
+  font-weight: 800 !important;
+  letter-spacing: 4px !important;
+  text-transform: uppercase !important;
+  color: var(--text-main) !important;
+  animation: pulseText 1.5s ease-in-out infinite !important;
 }
 
 @keyframes pulseText {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.6; transform: scale(0.98); }
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(0.98);
+  }
 }
 
 /* =========================================
@@ -527,43 +584,43 @@ div[style*="z-index: 10000"] h1 {
    ========================================= */
 /* Transisi halus saat perpindahan kondisi cahaya */
 #output_canvas {
-    transition: filter 0.5s ease !important;
+  transition: filter 0.5s ease !important;
 }
 
 /* Aktif otomatis saat sensor mendeteksi ruangan gelap */
 .bright-mode {
-    filter: brightness(1.3) contrast(1.2) saturate(1.1) !important;
-    image-rendering: -webkit-optimize-contrast !important;
-    image-rendering: crisp-edges !important;
+  filter: brightness(1.3) contrast(1.2) saturate(1.1) !important;
+  image-rendering: -webkit-optimize-contrast !important;
+  image-rendering: crisp-edges !important;
 }
 
 /* =========================================
    11. ROADMAP MOBILE CENTER (FINAL CLEAN)
    ========================================= */
 @media (max-width: 768px) {
-    /* Merapikan Judul Utama */
-    .section-title {
-        display: block !important;
-        text-align: center !important;
-        width: 100% !important;
-        margin: 20px 0 20px 0 !important; /* Jarak atas 20px, bawah 10px */
-        padding: 0 15px !important; /* Agar teks tidak menempel ke pinggir layar */
-        font-size: 1.8rem !important; /* Sedikit dikecilkan agar pas di layar kecil */
-    }
+  /* Merapikan Judul Utama */
+  .section-title {
+    display: block !important;
+    text-align: center !important;
+    width: 100% !important;
+    margin: 20px 0 20px 0 !important; /* Jarak atas 20px, bawah 10px */
+    padding: 0 15px !important; /* Agar teks tidak menempel ke pinggir layar */
+    font-size: 1.8rem !important; /* Sedikit dikecilkan agar pas di layar kecil */
+  }
 
-    /* Merapikan Tombol Back */
-    .btn-back-main {
-        display: block !important;
-        margin: 0 auto 30px auto !important; /* Rata tengah & jarak ke konten bawah 30px */
-        width: fit-content !important; /* Lebar tombol mengikuti teks */
-        padding: 10px 25px !important;
-        font-size: 0.9rem !important;
-    }
+  /* Merapikan Tombol Back */
+  .btn-back-main {
+    display: block !important;
+    margin: 0 auto 30px auto !important; /* Rata tengah & jarak ke konten bawah 30px */
+    width: fit-content !important; /* Lebar tombol mengikuti teks */
+    padding: 10px 25px !important;
+    font-size: 0.9rem !important;
+  }
 
-    /* Opsional: Menyesuaikan teks Progress agar ikut ke tengah */
-    .progress-text {
-        text-align: center !important;
-        display: block !important;
-        margin-bottom: 20px !important;
-    }
+  /* Opsional: Menyesuaikan teks Progress agar ikut ke tengah */
+  .progress-text {
+    text-align: center !important;
+    display: block !important;
+    margin-bottom: 20px !important;
+  }
 }

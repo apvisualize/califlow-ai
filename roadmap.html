@@ -1,88 +1,146 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Push Up Roadmap - CALI.FLOW</title>
-    <link rel="stylesheet" href="css/style.css"> <style>
-        body { background: #0a0a0a; color: white; font-family: 'Inter', sans-serif; }
-        .container { max-width: 600px; margin: 50px auto; padding: 20px; }
-        .roadmap-header { text-align: center; margin-bottom: 40px; }
-        .roadmap-header h1 { color: #00f3ff; font-size: 2.5rem; text-shadow: 0 0 15px rgba(0,243,255,0.3); }
-        
-        .step-card {
-            background: #111;
-            border: 1px solid #333;
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            transition: 0.3s;
-            text-decoration: none;
-            color: white;
-        }
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      body {
+        background: #0a0a0a;
+        color: white;
+        font-family: "Inter", sans-serif;
+      }
+      .container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+      }
+      .roadmap-header {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+      .roadmap-header h1 {
+        color: #00f3ff;
+        font-size: 2.5rem;
+        text-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+      }
 
-        .step-card.unlocked:hover { border-color: #00f3ff; transform: translateX(10px); }
-        .step-card.locked { opacity: 0.5; cursor: not-allowed; filter: grayscale(1); }
+      .step-card {
+        background: #111;
+        border: 1px solid #333;
+        border-radius: 15px;
+        padding: 20px;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        transition: 0.3s;
+        text-decoration: none;
+        color: white;
+      }
 
-        .step-info h3 { margin: 0; color: #00f3ff; }
-        .step-info p { margin: 5px 0 0; color: #888; font-size: 0.9rem; }
-        
-        .status-icon { font-size: 1.5rem; }
-        .badge { background: #00f3ff; color: black; padding: 2px 10px; border-radius: 10px; font-size: 0.7rem; font-weight: bold; }
+      .step-card.unlocked:hover {
+        border-color: #00f3ff;
+        transform: translateX(10px);
+      }
+      .step-card.locked {
+        opacity: 0.5;
+        cursor: not-allowed;
+        filter: grayscale(1);
+      }
+
+      .step-info h3 {
+        margin: 0;
+        color: #00f3ff;
+      }
+      .step-info p {
+        margin: 5px 0 0;
+        color: #888;
+        font-size: 0.9rem;
+      }
+
+      .status-icon {
+        font-size: 1.5rem;
+      }
+      .badge {
+        background: #00f3ff;
+        color: black;
+        padding: 2px 10px;
+        border-radius: 10px;
+        font-size: 0.7rem;
+        font-weight: bold;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <div class="roadmap-header">
-            <a href="index.html" style="color: #888; text-decoration: none;">← Kembali ke Dashboard</a>
-            <h1>PUSH UP ROADMAP</h1>
-            <p>Selesaikan setiap tahap untuk membuka teknik berikutnya.</p>
-        </div>
+      <div class="roadmap-header">
+        <a href="index.html" style="color: #888; text-decoration: none"
+          >← Kembali ke Dashboard</a
+        >
+        <h1>PUSH UP ROADMAP</h1>
+        <p>Selesaikan setiap tahap untuk membuka teknik berikutnya.</p>
+      </div>
 
-        <div id="roadmap-list">
-            </div>
+      <div id="roadmap-list"></div>
     </div>
 
-    <script src="js/workouts.js"></script> <script>
-        const roadmapData = [
-            { id: "wall_pushup", title: "Step 1: Wall Push Up", target: 15, desc: "Fokus pada penguatan otot dada dasar." },
-            { id: "knee_pushup", title: "Step 2: Knee Push Up", target: 12, desc: "Mulai melatih stabilitas core." },
-            { id: "regular_pushup", title: "Step 3: Standard Push Up", target: 10, desc: "Push up sempurna dengan teknik benar." }
-        ];
+    <script src="js/workouts.js"></script>
+    <script>
+      const roadmapData = [
+        {
+          id: "wall_pushup",
+          title: "Step 1: Wall Push Up",
+          target: 15,
+          desc: "Fokus pada penguatan otot dada dasar.",
+        },
+        {
+          id: "knee_pushup",
+          title: "Step 2: Knee Push Up",
+          target: 12,
+          desc: "Mulai melatih stabilitas core.",
+        },
+        {
+          id: "regular_pushup",
+          title: "Step 3: Standard Push Up",
+          target: 10,
+          desc: "Push up sempurna dengan teknik benar.",
+        },
+      ];
 
-        function renderRoadmap() {
-            const list = document.getElementById('roadmap-list');
-            const progress = JSON.parse(localStorage.getItem('califlow_progress')) || [];
-            
-            list.innerHTML = "";
+      function renderRoadmap() {
+        const list = document.getElementById("roadmap-list");
+        const progress =
+          JSON.parse(localStorage.getItem("califlow_progress")) || [];
 
-            roadmapData.forEach((step, index) => {
-                const isCompleted = progress.includes(step.id);
-                // Step 1 selalu terbuka, step lain terbuka jika step sebelumnya SELESAI
-                const isUnlocked = index === 0 || progress.includes(roadmapData[index-1].id);
-                
-                const card = document.createElement(isUnlocked ? 'a' : 'div');
-                card.className = `step-card ${isUnlocked ? 'unlocked' : 'locked'}`;
-                if(isUnlocked) card.href = `exercise.html?ex=${step.id}`;
+        list.innerHTML = "";
 
-                card.innerHTML = `
+        roadmapData.forEach((step, index) => {
+          const isCompleted = progress.includes(step.id);
+          // Step 1 selalu terbuka, step lain terbuka jika step sebelumnya SELESAI
+          const isUnlocked =
+            index === 0 || progress.includes(roadmapData[index - 1].id);
+
+          const card = document.createElement(isUnlocked ? "a" : "div");
+          card.className = `step-card ${isUnlocked ? "unlocked" : "locked"}`;
+          if (isUnlocked) card.href = `exercise.html?ex=${step.id}`;
+
+          card.innerHTML = `
                     <div class="step-info">
                         <span class="badge">TARGET: ${step.target} REPS</span>
                         <h3>${step.title}</h3>
                         <p>${step.desc}</p>
                     </div>
                     <div class="status-icon">
-                        ${isCompleted ? '✅' : (isUnlocked ? '▶️' : '🔒')}
+                        ${isCompleted ? "✅" : isUnlocked ? "▶️" : "🔒"}
                     </div>
                 `;
-                list.appendChild(card);
-            });
-        }
+          list.appendChild(card);
+        });
+      }
 
-        renderRoadmap();
+      renderRoadmap();
     </script>
-</body>
+  </body>
 </html>
